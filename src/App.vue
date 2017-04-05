@@ -1,14 +1,8 @@
 <template>
   <div >
      <v-header></v-header>
-     <router-view ></router-view>
-     <div class="tab fixed">
-        <div class="tab-item"><router-link :to="{path:'/sellers'}"><i class="iconfont icon-gerenzhongxin"></i>商家</router-link></div>
-        <div class="tab-item"><router-link :to="{path:'/ratings'}">评论</router-link></div>
-        <div class="tab-item"><router-link :to="{path:'/goods'}">商品</router-link></div>
-     </div>
      <!--路由外链-->
-     
+     <router-view ></router-view>
   </div>
 </template>
 
@@ -34,9 +28,5 @@ export default{
   .router-link-active{
     color:rgb(240,20,20);
   }
-  .fixed{
-     position:fixed;
-     bottom:0;
-  }
-         
+      
 </style>

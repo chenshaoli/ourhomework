@@ -6,18 +6,18 @@ import App from './App';
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
-import goods from './components/goods/goods';
-import sellers from './components/sellers/sellers';
-import ratings from './components/ratings/ratings';
+import center from './components/center/center';
+import login from './components/login/login';
+import register from './components/register/register';
 
 Vue.config.productionTip = false
 
 
 const routes=[
-{path:'/',redirect:'/sellers'},
-{path:'/sellers',component:sellers},
-{path:'/goods',component:goods},
-{path:'/ratings',component:ratings},
+{path:'/',redirect:'/login'},
+{path:'/login',component:login},
+{path:'/center',component:center},
+{path:'/register',component:register},
 ]
 
 const  router=new VueRouter({

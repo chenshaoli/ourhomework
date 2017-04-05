@@ -1,7 +1,6 @@
-
 <template>
 	<div>
-		我是评论
+		我是个人中心
 	</div>
 </template>
 <script>
