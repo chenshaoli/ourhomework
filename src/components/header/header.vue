@@ -1,6 +1,8 @@
 <template>
 	<div class="header">
 		<ul>
+		    <li><img src="" alt="同程旅游"></li>
+		    <li><input type="text"><span>search</span></li>
 			<li><router-link :to="{path:'./login'}">登陆</router-link></li>
 			<li><router-link :to="{path:'./register'}">注册</router-link></li>
 			<li><router-link :to="{path:'./center'}">个人中心</router-link></li>
