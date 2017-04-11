@@ -45,7 +45,7 @@
            	var that=this;
             $.ajax({
 	          async:true,
-	          url:'http://10.6.14.46:8080/flightcenter/MembersService/memberLogin.do',//要访问的后台地址
+	          url:'http://127.0.0.1:8086/flightcenter/MembersService/memberLogin.do',//要访问的后台地址
 	          // url:"#",
 	          type:"POST",
 	          data:that.loginModel,

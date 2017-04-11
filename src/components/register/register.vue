@@ -30,7 +30,7 @@
 				  
 				  <div class="form-group">
 				    <div class="col-sm-12">
-				      <button type="submit" class="btn btn-default" @click="register">注册</button>
+				      <button type="button" class="btn btn-default" @click="register">注册</button>
 				    </div>
 				  </div>
 				</form>
@@ -57,7 +57,7 @@
            	var that=this;
             $.ajax({
 	          async:true,
-	          url:'http://10.6.14.46:8080/flightcenter/MembersService/memberRegister.do',
+	          url:'http://127.0.0.1:8086/flightcenter/MembersService/memberRegister.do',
 	          type:"POST",
 	          contentType:"application/json",
 	          data:JSON.stringify(that.loginModel),

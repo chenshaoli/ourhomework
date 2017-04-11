@@ -11,7 +11,7 @@
 						  <div class="form-group">
 						    <label for="inputEmail3" class="col-sm-3 control-label">出发地</label>
 						    <div class="col-sm-9">
-						      <input type="text" class="form-control" id="inputEmail3" placeholder="出发地" v-model="flight.depart">
+						      <input type="text" class="form-control" id="inputEmail3" placeholder="出发地" v-model="flight.start">
 						    </div>
 						  </div>
 						  <div class="form-group">
@@ -23,10 +23,10 @@
 						 <div class="form-group">
 						    <label for="inputPassword3" class="col-sm-3 control-label">出发时间</label>
 						    <div class="col-sm-9">
-						      <input type="text" class="form-control" id="inputPassword3" placeholder="出发时间">
+						      <input type="text" class="form-control" id="inputPassword3" placeholder="出发时间" v-model="flight.startTime">
 						    </div>
 						  </div>
-						<div class="btn btn-primary btn-sm btn_center" @click="search">查询</div>
+						<button class="btn btn-primary btn-sm btn_center" type="button" @click="search">查询</button>
 						   
 						</form>
 
@@ -46,25 +46,25 @@
 		  <table class="table table-hover maxtop">
 					<thead>
 					<tr>
-						<th>航司</th>
-						<th>班次</th>
-						<th>出发地</th>
 						<th>目的地</th>
-						<th>出发时刻</th>
-						<th>到达时刻</th>
+						<th>出发地</th>
+						<th>出发时间</th>
+						<th>到达时间</th>
+						<th>航司</th>
+						<th>航班编号</th>
 					</tr>
 					</thead>
 					<tbody>
-					<tr v-for="(fly,index) in newflight"><!-- 给循环的fly起个别名，这个别名就是索引号，这时可以获取到表中的行的信息的索引 -->
-						<td>{{fly.company}}</td>
-						<td>{{fly.number}}</td>
-						<td>{{fly.depart}}</td>
+					<tr v-for="fly in newflight">
 						<td>{{fly.dest}}</td>
-						<td>{{fly.StartTime}}</td>
-						<td>{{fly.GetTime}}</td>
-						<td><router-link class="btn btn-primary btn-sm" :to="{path:'./book2'}">详情</router-link></td>
-						<!-- <td><button @click="detail(index)" class="btn btn-primary" id="aa">详情</button></td> -->
+						<td>{{fly.destTime}}</td>
+						<td>{{fly.name}}</td>
+						<td>{{fly.number}}</td>
+						<td>{{fly.start}}</td>
+						<td>{{fly.startTime}}</td>
+						<td><button  class="btn btn-primary" id="aa" @click="transform(fly.id)">详情</button></td>
 					</tr>
+					//<router-link class="btn btn-primary btn-sm" :to="{path:'./book2'}"  @click="transform(fly.id)">详情</router-link>
 					</tbody>
 			</table>
 	     </section>
@@ -77,104 +77,68 @@
 
  import book2 from '../book2/book2';
 export default{
-data(){
-	return{
-   newflight:
-      [
-       {
-       company:"中国国际航空",
-      number:"CA4194",
-      depart:'苏州',
-      dest:"安阳",
-      StartTime:"2017-3-2 12:00:00",
-      GetTime:'2017-3-2 14:00:00',
-      money:"最低￥235"
-        },
-        {
-       company:"中国国际航空",
-      number:"CA4194",
-      depart:'苏州',
-      dest:"南京",
-      StartTime:"2017-3-2 12:00:00",
-      GetTime:'2017-3-2 14:00:00',
-      money:"最低￥267"
-        },{
-       company:"中国国际航空",
-      number:"CA4194",
-      depart:'苏州',
-      dest:"南京",
-      StartTime:"2017-3-2 12:00:00",
-      GetTime:'2017-3-2 14:00:00',
-      money:"最低￥267"
-        }    
-      ],
-      flight:
-      [
-       {
-       company:"中国国际航空",
-      number:"CA4194",
-      depart:'苏州',
-      dest:"安阳",
-      StartTime:"2017-3-2 12:00:00",
-      GetTime:'2017-3-2 14:00:00',
-      money:"最低￥235"
-        },
-        {
-       company:"中国国际航空",
-      number:"CA4194",
-      depart:'苏州',
-      dest:"南京",
-      StartTime:"2017-3-2 12:00:00",
-      GetTime:'2017-3-2 14:00:00',
-      money:"最低￥267"
-        }]
-    
-  }
-      
+	data(){
+		return{
+	   		newflight:[],
+	      	flight:{
+	      		start:'',
+	      		dest:'',
+				startTime:''
+	      	}
+      	}   
 	},
 	methods: {
         search:function(){
-        	 var depart=this.flight.depart;//获取客户的输入出发地；
-	         var dest=this.flight.dest;//获取客户输入的目的地；
-	         var flight=this.flight; //这个应该是后台给我的数据；
-	         var  newflight=this.newflight=[];  //新建newflight并初始化为空；
-             for(index in flight){
-              if(depart===flight[index].depart&&dest===flight[index].dest){
-                  newflight.push(flight[index]);//遍历flight,若数据中有查找到的航班则存储到newflight数组中去；
-
-                }  
-               };
-        	// var vm=this;
-
-        	// $.ajax({
-       //    async:true,
-       //    url:url,//要访问的后台地址
-       //    type:"POST",
-       //    data：['start':depart,'dest':dest],
-       //    dataType:'json',
-       //    error:function(){
-       //       alert('获取信息失败！');
-       //    },
-       //    success:function(data){
-       //      var flight=data; //这个应该是后台给我的数据；
-       //      var  newflight=this.newflight=[];  //新建newflight并初始化为空；
-       //       for(index in flight){
-       //        if(depart===flight[index].depart&&dest===flight[index].dest){
-       //            newflight.push(flight[index]);//遍历flight,若数据中有查找到的航班则存储到newflight数组中去；
-       //          }
-       //        }
-       //     }
-       //  })
+        	var vm=this;
+        	$.ajax({
+		          async:true,
+		          url:'http://127.0.0.1:8086/flightcenter/InfosService/selectByConditions.do',
+		          type:"POST",
+				  contentType:"application/json",
+		          data:JSON.stringify(vm.flight),
+		          dataType:'json',
+		          error:function(){
+		             alert('获取信息失败！');
+		          },
+		          success:function(data){
+		          //这个应该是后台给我的数据；
+		            console.log(data);
+		            vm.newflight=data.obj; //新建newflight并初始化为空；
+		             for( var index in data){
+		              if(vm.flight.start===data.obj[index].start&&vm.flight.dest===data.obj[index].dest){
+		                  vm.newflight.push(data[index]);
+						  var flightmessage=JSON.stringify(data.obj);
+						   
+                }
+				         
+              }
+             }
+          })
         },
-        detail:function(){
-         
-        }
+			transform:function(index){
+			      var id=index;
+				  console.log(id);
+				  window.localStorage.setItem( 'id', id );
+                    window.location.href="../book2";
+			} 		
       },
-      components:{
-      	
-      }
-	
-
+        created:function(){
+        	       var _this=this;
+              	$.ajax({
+		            async:true,
+		            url:'http://127.0.0.1:8086/flightcenter/InfosService/selectInfos.do',
+		            type:"POST",
+		            dataType:'json',
+		            error:function(){
+		               alert('获取信息失败！');
+		            },
+		            success:function(data){
+		              console.log(data.obj);
+                      _this.newflight=data.obj;
+                      console.log(_this.newflight);
+                   }
+             })
+		  }
 }
 // 轮播图
 var innerGroup = $(".innerwraper");
