@@ -35,13 +35,13 @@
 <style>
 	.login_body{
 		width: 400px;
-		height: 450px;
+		height: 350px;
 		border: 2px solid rgba(7,17,27,0.1);
 		margin:100px auto;
 	}
 	h2{
-		height: 80px;
-		line-height: 80px;
+		height: 30px;
+		line-height: 30px;
 		margin: 0 auto;
         font-size: 20px;
 	}

@@ -3,19 +3,20 @@
 		<div class="container1" >
 			<div class="inner clearfix">
                 <div class="innerwraper img-responsive"><a href="http://www.ly.com/jp/czt/pc_zt_fu30170313"><img src="../../common/image/pKAy1k.jpg" alt="" /></a></div>
-                <div class="innerwraper img-responsive"><a href="http://www.ly.com/jp/czt/pc_zt_fu30170313"><img src="../../common/image/rBLkBljnco6AcdpAAAIAAGjeneY638.jpg" alt="" /></a></div>
-                <div class="innerwraper img-responsive"><a href="http://pro.zhongjiu.cn/20170303/goddessFes.html"><img src="../../common/image/BsvT8k.jpg" alt="" /></a></div>
-                <div class="searchbanner">
+                <!-- <div class="innerwraper img-responsive"><a href="http://www.ly.com/jp/czt/pc_zt_fu30170313"><img src="../../common/image/rBLkBljnco6AcdpAAAIAAGjeneY638.jpg" alt="" /></a></div>
+                <div class="innerwraper img-responsive"><a href="http://pro.zhongjiu.cn/20170303/goddessFes.html"><img src="../../common/image/BsvT8k.jpg" alt="" /></a></div> -->
+            </div>
+                  <div class="searchbanner">
                 	<form class="form-horizontal">
 						  <div class="form-group">
-						    <label for="inputEmail3" class="col-sm-2 control-label">出发地</label>
-						    <div class="col-sm-10">
+						    <label for="inputEmail3" class="col-sm-3 control-label">出发地</label>
+						    <div class="col-sm-9">
 						      <input type="email" class="form-control" id="inputEmail3" placeholder="出发地">
 						    </div>
 						  </div>
 						  <div class="form-group">
-						    <label for="inputPassword3" class="col-sm-2 control-label">目的地</label>
-						    <div class="col-sm-10">
+						    <label for="inputPassword3" class="col-sm-3 control-label">目的地</label>
+						    <div class="col-sm-9">
 						      <input type="password" class="form-control" id="inputPassword3" placeholder="目的地">
 						    </div>
 						  </div>
@@ -25,23 +26,20 @@
 						      <input type="password" class="form-control" id="inputPassword3" placeholder="出发时间">
 						    </div>
 						  </div>
-						
+						<div><router-link class="btn btn-primary btn-sm" >查询</router-link></div>
+						   
 						</form>
-                </div>
-            </div>
 
-               <div class="pagination1">
+                </div>
+               <!-- <div class="pagination1">
                 <span class="active">1</span>
                 <span>2</span>
                 <span>3</span>
                 <span>4</span>
-                <span>5</span>
-                <span>6</span>
-                <span>7</span>
-                <span>8</span>
-            </div>
-            <a href="javascript:void(0)" class="left-arrow">&lt;</a>
-            <a href="javascript:void(0)" class="right-arrow">&gt;</a>
+               
+            </div> -->
+            <!-- <a href="javascript:void(0)" class="left-arrow">&lt;</a>
+            <a href="javascript:void(0)" class="right-arrow">&gt;</a> -->
 		</div>
 
          <div>
@@ -60,26 +58,6 @@
 					</tr>
 					</thead>
 					<tbody>
-					<tr>
-						<td>中国国际航空</td>
-						<td>CA4194</td>
-						<td>苏州</td>
-						<td>安阳</td>
-						<td>2017-3-2 12:00:00</td>
-						<td>2017-3-2 14:00:00</td>
-						<td>最低￥235</td>
-						<td><router-link class="btn btn-primary btn-sm" :to="{path:'./login'}">详情</router-link></td>
-					</tr>
-					<tr>
-						<td>中国国际航空</td>
-						<td>CA4194</td>
-						<td>苏州</td>
-						<td>安阳</td>
-						<td>2017-3-2 12:00:00</td>
-						<td>2017-3-2 14:00:00</td>
-						<td>最低￥235</td>
-						<td><router-link class="btn btn-primary btn-sm" :to="{path:'./book2'}">详情</router-link></td>
-					</tr>
 					<tr v-for="(fly,index) in newflight"><!-- 给循环的fly起个别名，这个别名就是索引号，这时可以获取到表中的行的信息的索引 -->
 						<td>{{fly.company}}</td>
 						<td>{{fly.number}}</td>
@@ -88,7 +66,7 @@
 						<td>{{fly.StartTime}}</td>
 						<td>{{fly.GetTime}}</td>
 						<td class="red">{{fly.money}}</td>
-						<td><button @click="detail(index)" class="btn btn-primary" id="aa">详情</button></td>
+						<td><router-link class="btn btn-primary btn-sm" :to="{path:'./book2'}">详情</router-link></td>
 					</tr>
 					</tbody>
 			</table>
@@ -100,9 +78,10 @@
 </template>
 <script>
 
-// import book2 from '../../components/book2/book2';
+ import book2 from '../../components/book2/book2';
 export default{
-data:function(){
+data(){
+	return{
    newflight:
       [
        {
@@ -122,9 +101,28 @@ data:function(){
       StartTime:"2017-3-2 12:00:00",
       GetTime:'2017-3-2 14:00:00',
       money:"最低￥267"
-        }   
-      ]
+        },{
+       company:"中国国际航空",
+      number:"CA4194",
+      depart:'苏州',
+      dest:"南京",
+      StartTime:"2017-3-2 12:00:00",
+      GetTime:'2017-3-2 14:00:00',
+      money:"最低￥267"
+        }    
+      ]}
+      // methods:{
+      //   search(){
+      //   	$.ajax({
+      //   		type:'POST',
+      //   		url:"##",
+      //   		dataType:"json",
+      //   		data:
+      //   	})
+      //   }
+      // }
 	},
+	
 
 }
 // 轮播图
@@ -166,13 +164,13 @@ $(".container1").hover(function() {
     flag = false;
 }, function() {
     flag = true;
-    timer = setInterval(go, 3000);
+    timer = setInterval(go, 8000);
 });
 
 function autoGo(bol) {
     //自动行走
     if (bol) {
-        timer = setInterval(go, 3000);
+        timer = setInterval(go, 8000);
     }
 }
 autoGo(flag);
@@ -189,7 +187,7 @@ function selectPic(num) {
     }, 1000, function() {
         //检查是否到最后一张
         if (_index == innerGroup.length - 1) {
-            _index %= 8;
+            _index %= 4;
             $(".inner").css("left", "0px");
             $(".pagination1 span").eq(0).addClass("active").siblings().removeClass("active");
         }
@@ -281,8 +279,11 @@ a {
 	border-radius:8px;
 	left: 140px;
 	top:20px;
-	background-color: #fff;
+	background-color: #87CEEB;
 	font-size: 18px;
 }
-
+.btn_center{
+	margin-left: 320px;
+	width:80px;
+}
 </style>
