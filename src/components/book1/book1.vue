@@ -52,7 +52,6 @@
 						<th>目的地</th>
 						<th>出发时刻</th>
 						<th>到达时刻</th>
-						<th>最低价格</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -63,9 +62,8 @@
 						<td>{{fly.dest}}</td>
 						<td>{{fly.StartTime}}</td>
 						<td>{{fly.GetTime}}</td>
-						<td class="red">{{fly.money}}</td>
-						<!-- <td><router-link class="btn btn-primary btn-sm" :to="{path:'./book2'}">详情</router-link></td> -->
-						<td><button @click="detail(index)" class="btn btn-primary" id="aa">详情</button></td>
+						<td><router-link class="btn btn-primary btn-sm" :to="{path:'./book2'}">详情</router-link></td>
+						<!-- <td><button @click="detail(index)" class="btn btn-primary" id="aa">详情</button></td> -->
 					</tr>
 					</tbody>
 			</table>
@@ -77,7 +75,7 @@
 </template>
 <script>
 
- import book2 from '../../components/book2/book2';
+ import book2 from '../book2/book2';
 export default{
 data(){
 	return{
@@ -171,6 +169,9 @@ data(){
         detail:function(){
          
         }
+      },
+      components:{
+      	
       }
 	
 

@@ -5,6 +5,7 @@ import book1 from '../components/book1/book1'
 import login from '../components/login/login'
 import register from '../components/register/register'
 import center from '../components/center/center'
+import book2 from '../components/book2/book2'
 
 
 Vue.use(Router);
@@ -33,6 +34,11 @@ export default new Router({
       path: '/center',
       name: 'center',
       component: center
+    },
+    {
+      path: '/book2',
+      name: 'book2',
+      component: book2
     }
   ]
 });

@@ -9,34 +9,33 @@
 		   			<thead>
 		   				<tr>
 		   					<th>姓名</th>
-		   					<th>性别</th>
 		   					<th>电话号码</th>
 		   					<th>身份证号码</th>
 		   				</tr>
 		   			</thead>
 		   			<tbody class="table-hover">
 		   				<tr>
-		   					<td></td>
-		   					<td></td>
-		   					<td></td>
-		   					<td></td>
+		   					<td>{{names}}</td>
+		   					<td>{{phone}}</td>
+		   					<td>{{identify}}</td>
+		   					<td><button>删除</button></td>
 		   				</tr>
 		   			</tbody>
 		   		</table>
 		   	</article>
 		   </div>
 		   <div id="records">
-		   	<h3>
+		   	<h4>
                 往期记录		   	
-            </h3>
+            </h4>
 		   	<article>
 		   		bbba
 		   	</article>
 		   </div>
 			<div id="special">
-		   	<h3>
+		   	<h4>
 		   		会员特权
-		   	</h3>
+		   	</h4>
 		   	<article>
 		   		aaaaa
 		   	</article>
@@ -45,7 +44,17 @@
 	</div>
 </template>
 <script>
-	export default{};
+	export default{
+		// data(){
+		// 	return{
+		// 		var phone= sessionStorage.getIterm('phone');
+		// 		var names= sessionStorage.getIterm('names');
+		// 		var password= sessionStorage.getIterm('password');
+		// 		var identify= sessionStorage.getIterm('identify');
+		// 	}
+		// }
+		
+	};
 </script>
 <style>
 	#center{

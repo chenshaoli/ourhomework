@@ -39,12 +39,13 @@
                 }
 			}
 		},
+		
        methods:{
            login:function(){
            	var that=this;
             $.ajax({
 	          async:true,
-	          url:'http://10.6.15.16:8080/flightcenter/MembersService/memberLogin.do',//要访问的后台地址
+	          url:'http://10.6.14.46:8080/flightcenter/MembersService/memberLogin.do',//要访问的后台地址
 	          // url:"#",
 	          type:"POST",
 	          data:that.loginModel,
@@ -53,14 +54,22 @@
 	             alert('获取信息失败！');
 	          },
 	          success:function(data){
-	             	that.flight=data;
+	          	if(data.errorCode=="success"){
+	          		// window.location.href="../book1.vue";
+	          		that.flight=data;
 	               console.log(that.flight);
+	          	}
+	             	
 	           }
             });
 
 	          console.log(that.loginModel);
            }
-       }
+       },
+       ready: function() {
+                 sessionStorage.setItem('phoneNum', loginModel.phoneNum);
+                 sessionStorage.setItem('password', loginModel.password);
+            }
 
 	};
 
