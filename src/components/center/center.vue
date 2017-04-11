@@ -1,13 +1,5 @@
 <template>
 	<div id="center">
-		<div>
-			<ul>
-				<li><a href="javascript:(0)" >同程会员</a></li>
-				<li><a href="/#detail" >会员信息</a></li>
-				<li><a href="/#record">往期记录</a></li>
-				<li><a href="/#special">会员特权</a></li>
-			</ul>
-		</div>
 		   <div id="detail">
 		   	<h3>
 		   		会员信息

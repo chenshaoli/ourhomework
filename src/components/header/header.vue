@@ -1,17 +1,9 @@
 <template>
 	<div class="header">
-		<!-- <ul>
-		    <li><a href="#"><img src="../../common/image/gQ4fcp.png" alt="同程旅游"></a></li>
-		    <li><input type="text"></li>
-			<li><router-link :to="{path:'./book1'}">首页</router-link></li>
-			<li><router-link :to="{path:'./login'}">登陆</router-link></li>
-			<li><router-link :to="{path:'./register'}">注册</router-link></li>
-			<li><router-link :to="{path:'./center'}">个人中心</router-link></li>
-		</ul> -->
 		<div class="row">
 		  <div class="col-xs-6 col-md-2 col-md-offset-1"><a href="#"><img src="../../common/image/gQ4fcp.png" alt="同程旅游"></a></div>
-		  <div class="col-xs-6 col-md-3"></div>
-		  <div class="col-xs-6 col-md-6">
+		  <div class="col-xs-6 col-md-2"></div>
+		  <div class="col-xs-6 col-md-7">
 		  <ul>
 			  <li><router-link :to="{path:'./book1'}">首页</router-link></li>
 			  <li><router-link :to="{path:'./login'}">登陆</router-link></li>

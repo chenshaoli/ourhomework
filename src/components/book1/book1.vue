@@ -3,43 +3,41 @@
 		<div class="container1" >
 			<div class="inner clearfix">
                 <div class="innerwraper img-responsive"><a href="http://www.ly.com/jp/czt/pc_zt_fu30170313"><img src="../../common/image/pKAy1k.jpg" alt="" /></a></div>
-                <!-- <div class="innerwraper img-responsive"><a href="http://www.ly.com/jp/czt/pc_zt_fu30170313"><img src="../../common/image/rBLkBljnco6AcdpAAAIAAGjeneY638.jpg" alt="" /></a></div>
-                <div class="innerwraper img-responsive"><a href="http://pro.zhongjiu.cn/20170303/goddessFes.html"><img src="../../common/image/BsvT8k.jpg" alt="" /></a></div> -->
+                <div class="innerwraper img-responsive"><a href="http://www.ly.com/jp/czt/pc_zt_fu30170313"><img src="../../common/image/rBLkBljnco6AcdpAAAIAAGjeneY638.jpg" alt="" /></a></div>
+                <div class="innerwraper img-responsive"><a href="http://pro.zhongjiu.cn/20170303/goddessFes.html"><img src="../../common/image/BsvT8k.jpg" alt="" /></a></div>
             </div>
                   <div class="searchbanner">
                 	<form class="form-horizontal">
 						  <div class="form-group">
 						    <label for="inputEmail3" class="col-sm-3 control-label">出发地</label>
 						    <div class="col-sm-9">
-						      <input type="email" class="form-control" id="inputEmail3" placeholder="出发地">
+						      <input type="text" class="form-control" id="inputEmail3" placeholder="出发地" v-model="flight.depart">
 						    </div>
 						  </div>
 						  <div class="form-group">
 						    <label for="inputPassword3" class="col-sm-3 control-label">目的地</label>
 						    <div class="col-sm-9">
-						      <input type="password" class="form-control" id="inputPassword3" placeholder="目的地">
+						      <input type="text" class="form-control" id="inputPassword3" placeholder="目的地" v-model="flight.dest">
 						    </div>
 						  </div>
 						 <div class="form-group">
 						    <label for="inputPassword3" class="col-sm-3 control-label">出发时间</label>
 						    <div class="col-sm-9">
-						      <input type="password" class="form-control" id="inputPassword3" placeholder="出发时间">
+						      <input type="text" class="form-control" id="inputPassword3" placeholder="出发时间">
 						    </div>
 						  </div>
-						<div><router-link class="btn btn-primary btn-sm" >查询</router-link></div>
+						<div class="btn btn-primary btn-sm btn_center" @click="search">查询</div>
 						   
 						</form>
 
                 </div>
-               <!-- <div class="pagination1">
+               <div class="pagination1">
                 <span class="active">1</span>
                 <span>2</span>
                 <span>3</span>
-                <span>4</span>
-               
-            </div> -->
-            <!-- <a href="javascript:void(0)" class="left-arrow">&lt;</a>
-            <a href="javascript:void(0)" class="right-arrow">&gt;</a> -->
+               </div>
+            <a href="javascript:void(0)" class="left-arrow">&lt;</a>
+            <a href="javascript:void(0)" class="right-arrow">&gt;</a>
 		</div>
 
          <div>
@@ -66,7 +64,8 @@
 						<td>{{fly.StartTime}}</td>
 						<td>{{fly.GetTime}}</td>
 						<td class="red">{{fly.money}}</td>
-						<td><router-link class="btn btn-primary btn-sm" :to="{path:'./book2'}">详情</router-link></td>
+						<!-- <td><router-link class="btn btn-primary btn-sm" :to="{path:'./book2'}">详情</router-link></td> -->
+						<td><button @click="detail(index)" class="btn btn-primary" id="aa">详情</button></td>
 					</tr>
 					</tbody>
 			</table>
@@ -110,18 +109,69 @@ data(){
       GetTime:'2017-3-2 14:00:00',
       money:"最低￥267"
         }    
-      ]}
-      // methods:{
-      //   search(){
-      //   	$.ajax({
-      //   		type:'POST',
-      //   		url:"##",
-      //   		dataType:"json",
-      //   		data:
-      //   	})
-      //   }
-      // }
+      ],
+      flight:
+      [
+       {
+       company:"中国国际航空",
+      number:"CA4194",
+      depart:'苏州',
+      dest:"安阳",
+      StartTime:"2017-3-2 12:00:00",
+      GetTime:'2017-3-2 14:00:00',
+      money:"最低￥235"
+        },
+        {
+       company:"中国国际航空",
+      number:"CA4194",
+      depart:'苏州',
+      dest:"南京",
+      StartTime:"2017-3-2 12:00:00",
+      GetTime:'2017-3-2 14:00:00',
+      money:"最低￥267"
+        }]
+    
+  }
+      
 	},
+	methods: {
+        search:function(){
+        	 var depart=this.flight.depart;//获取客户的输入出发地；
+	         var dest=this.flight.dest;//获取客户输入的目的地；
+	         var flight=this.flight; //这个应该是后台给我的数据；
+	         var  newflight=this.newflight=[];  //新建newflight并初始化为空；
+             for(index in flight){
+              if(depart===flight[index].depart&&dest===flight[index].dest){
+                  newflight.push(flight[index]);//遍历flight,若数据中有查找到的航班则存储到newflight数组中去；
+
+                }  
+               };
+        	// var vm=this;
+
+        	// $.ajax({
+       //    async:true,
+       //    url:url,//要访问的后台地址
+       //    type:"POST",
+       //    data：['start':depart,'dest':dest],
+       //    dataType:'json',
+       //    error:function(){
+       //       alert('获取信息失败！');
+       //    },
+       //    success:function(data){
+       //      var flight=data; //这个应该是后台给我的数据；
+       //      var  newflight=this.newflight=[];  //新建newflight并初始化为空；
+       //       for(index in flight){
+       //        if(depart===flight[index].depart&&dest===flight[index].dest){
+       //            newflight.push(flight[index]);//遍历flight,若数据中有查找到的航班则存储到newflight数组中去；
+       //          }
+       //        }
+       //     }
+       //  })
+        },
+        detail:function(){
+         
+        }
+      }
 	
 
 }

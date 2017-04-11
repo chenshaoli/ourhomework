@@ -4,21 +4,21 @@
 			 <h2>会员登录</h2>
 			 <form class="form-horizontal">
 				  <div class="form-group">
-				    <label for="inputEmail3" class="col-sm-2 control-label">电话号码</label>
+				    <label for="phoneNum" class="col-sm-2 control-label">电话号码</label>
 				    <div class="col-sm-10">
-				      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+				      <input type="email" class="form-control" id="phoneNum" placeholder="电话号码" name="phoneNum" v-model="loginModel.phoneNum">
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+				    <label for="password" class="col-sm-2 control-label">密码</label>
 				    <div class="col-sm-10">
-				      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+				      <input type="password" class="form-control" id="password" placeholder="密码" v-model="loginModel.password">
 				    </div>
 				  </div>
 				  
 				  <div class="form-group">
 				    <div class="col-sm-12">
-				      <button type="submit" class="btn btn-default">登陆</button>
+				      <button type="submit" class="btn btn-default" @click="login">登陆</button>
 				    </div>
 				  </div>
 				</form>
@@ -28,7 +28,41 @@
 	</div>
 </template>
 <script>
-	export default{};
+	export default{
+		data(){
+			return{
+				flight:[],
+				loginModel: {
+                    phoneNum: '',
+                    password: '',
+                    grant_type: 'password'
+                }
+			}
+		},
+       methods:{
+           login:function(){
+           	var that=this;
+            $.ajax({
+	          async:true,
+	          url:'http://10.6.15.16:8080/flightcenter/MembersService/memberLogin.do',//要访问的后台地址
+	          // url:"#",
+	          type:"POST",
+	          data:that.loginModel,
+	          dataType:'json',
+	          error:function(){
+	             alert('获取信息失败！');
+	          },
+	          success:function(data){
+	             	that.flight=data;
+	               console.log(that.flight);
+	           }
+            });
+
+	          console.log(that.loginModel);
+           }
+       }
+
+	};
 
 
 </script>
