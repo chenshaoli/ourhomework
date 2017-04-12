@@ -10,24 +10,26 @@
                 	<form class="form-horizontal">
 						  <div class="form-group">
 						    <label for="inputEmail3" class="col-sm-3 control-label">出发地</label>
-						    <div class="col-sm-9">
+						    <div class="col-sm-8 input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon glyphicon-export" aria-hidden="true"></span></div>
 						      <input type="text" class="form-control" id="inputEmail3" placeholder="出发地" v-model="flight.start">
 						    </div>
 						  </div>
 						  <div class="form-group">
 						    <label for="inputPassword3" class="col-sm-3 control-label">目的地</label>
-						    <div class="col-sm-9">
+						    <div class="col-sm-8 input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon glyphicon-import" aria-hidden="true"></span></div>
 						      <input type="text" class="form-control" id="inputPassword3" placeholder="目的地" v-model="flight.dest">
 						    </div>
 						  </div>
 						 <div class="form-group">
 						    <label for="inputPassword3" class="col-sm-3 control-label">出发时间</label>
-						    <div class="col-sm-9">
+						    <div class="col-sm-8 input-group">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon glyphicon-hourglass" aria-hidden="true"></span></div>
 						      <input type="text" class="form-control" id="inputPassword3" placeholder="出发时间" v-model="flight.startTime">
 						    </div>
 						  </div>
 						<button class="btn btn-primary btn-sm btn_center" type="button" @click="search">查询</button>
-						   
 						</form>
 
                 </div>
@@ -62,9 +64,9 @@
 						<td>{{fly.number}}</td>
 						<td>{{fly.start}}</td>
 						<td>{{fly.startTime}}</td>
-						<td><button  class="btn btn-primary" id="aa" @click="transform(fly.id)">详情</button></td>
+						<td><button  class="btn btn-primary" id="aa" @click="transform(fly)">详情</button></td>
 					</tr>
-					//<router-link class="btn btn-primary btn-sm" :to="{path:'./book2'}"  @click="transform(fly.id)">详情</router-link>
+					<!-- <router-link class="btn btn-primary btn-sm" :to="{path:'./book2'}"  @click="transform(fly.id)">详情</router-link> -->
 					</tbody>
 			</table>
 	     </section>
@@ -79,7 +81,14 @@
 export default{
 	data(){
 		return{
-	   		newflight:[],
+	   		newflight:[{
+                dest:'北京',
+                start:'南京',
+                startTime:'12334',
+                destTime:'23244'
+            }
+
+            ],
 	      	flight:{
 	      		start:'',
 	      		dest:'',
@@ -115,12 +124,12 @@ export default{
              }
           })
         },
-			transform:function(index){
-			      var id=index;
-				  console.log(id);
-				  window.localStorage.setItem( 'id', id );
+		transform:function(index){
+			      var flightInfo=index;
+				  console.log(flightInfo);
+				  window.localStorage.setItem( 'flightInfo', flightInfo );
                     window.location.href="../book2";
-			} 		
+		} 		
       },
         created:function(){
         	       var _this=this;

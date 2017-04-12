@@ -5,37 +5,41 @@
 			 <form class="form-horizontal">
 				  <div class="form-group">
 				    <label for="phone" class="col-sm-3 control-label">电话号码</label>
-				    <div class="col-sm-9">
+				    <div class="col-sm-8 input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon glyphicon-earphone" aria-hidden="true"></span></div>
 				      <input type="text" class="form-control" id="phone" placeholder="电话号码" v-model="loginModel.phone">
 				    </div>
 				  </div>
 				  <div class="form-group">
 				    <label for="names" class="col-sm-3 control-label">姓名</label>
-				    <div class="col-sm-9">
+				    <div class="col-sm-8 input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span></div>
 				      <input type="text" class="form-control" id="names" placeholder="姓名"v-model="loginModel.names">
 				    </div>
 				  </div>
 				  <div class="form-group">
 				    <label for="identify" class="col-sm-3 control-label">身份证</label>
-				    <div class="col-sm-9">
+				    <div class="col-sm-8 input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon glyphicon-picture" aria-hidden="true"></span></div>
 				      <input type="text" class="form-control" id="identify" placeholder="身份证" v-model="loginModel.identify">
 				    </div>
 				  </div>
 				  <div class="form-group">
 				    <label for="password" class="col-sm-3 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
-				    <div class="col-sm-9">
+				    <div class="col-sm-8 input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon glyphicon-eye-close" aria-hidden="true"></span></div>
 				      <input type="password" class="form-control" id="password" placeholder="密码" v-model="loginModel.password">
 				    </div>
 				  </div>
 				  
 				  <div class="form-group">
 				    <div class="col-sm-12">
-				      <button type="button" class="btn btn-default" @click="register">注册</button>
+				      <button type="button" class="btn btn-primary" @click="register">注册</button>
 				    </div>
 				  </div>
 				</form>
 			 <span>忘记密码？</span>
-			 <div class="register"><router-link :to="{path:'/login'}">登陆</router-link></div>
+			 <div class="register"><router-link :to="{path:'/login'}">直接登陆</router-link></div>
 	</div>
 </template>
 <script>
@@ -64,8 +68,14 @@
 	          dataType:'json',
 	        
 	          success:function(data){
-	               that.flight=data;
-	               console.log(that.flight);
+	              if(data.errorCode=="success"){
+	          		window.location.href="./book1";
+	          		that.person=data;
+	               // console.log(that.person);
+	                window.localStorage.setItem( 'newperonInfo', that.person );
+
+	          	}
+
 	           }, 
 	            error:function(){
 	             alert('获取信息失败！');

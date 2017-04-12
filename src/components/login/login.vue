@@ -1,29 +1,31 @@
 <template>
 	<div>
 		<div class="login_body">
-			 <h2>会员登录</h2>
+			 <h2>会员登陆</h2>
 			 <form class="form-horizontal">
 				  <div class="form-group">
-				    <label for="phoneNum" class="col-sm-2 control-label">电话号码</label>
-				    <div class="col-sm-10">
+				    <label for="phoneNum" class="col-sm-3 control-label">电话号码</label>
+				    <div class="col-sm-8 input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon glyphicon-earphone" aria-hidden="true"></span></div>
 				      <input type="email" class="form-control" id="phoneNum" placeholder="电话号码" name="phoneNum" v-model="loginModel.phoneNum">
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <label for="password" class="col-sm-2 control-label">密码</label>
-				    <div class="col-sm-10">
+				    <label for="password" class="col-sm-3 control-label">密码</label>
+				    <div class="col-sm-8 input-group">
+				    <div class="input-group-addon"><span class="glyphicon glyphicon glyphicon-eye-close" aria-hidden="true"></span></div>
 				      <input type="password" class="form-control" id="password" placeholder="密码" v-model="loginModel.password">
 				    </div>
 				  </div>
 				  
 				  <div class="form-group">
 				    <div class="col-sm-12">
-				      <button type="submit" class="btn btn-default" @click="login">登陆</button>
+				      <button type="submit" class="btn btn-primary" @click="login">登陆</button>
 				    </div>
 				  </div>
 				</form>
 			 <span>忘记密码？</span>
-			 <div class="register"><router-link :to="{path:'/register'}">注册</router-link></div>
+			 <div class="register"><router-link :to="{path:'/register'}">马上注册</router-link></div>
 		</div>
 	</div>
 </template>
@@ -31,7 +33,7 @@
 	export default{
 		data(){
 			return{
-				flight:[],
+				person:[],
 				loginModel: {
                     phoneNum: '',
                     password: '',
@@ -45,8 +47,7 @@
            	var that=this;
             $.ajax({
 	          async:true,
-	          url:'http://127.0.0.1:8086/flightcenter/MembersService/memberLogin.do',//要访问的后台地址
-	          // url:"#",
+	          url:'http://127.0.0.1:8086/flightcenter/MembersService/memberLogin.do',
 	          type:"POST",
 	          data:that.loginModel,
 	          dataType:'json',
@@ -55,9 +56,11 @@
 	          },
 	          success:function(data){
 	          	if(data.errorCode=="success"){
-	          		// window.location.href="../book1.vue";
-	          		that.flight=data;
-	               console.log(that.flight);
+	          		window.location.href="./book1";
+	          		that.person=data;
+	               // console.log(that.person);
+	                window.localStorage.setItem( 'personInfo', that.person );
+
 	          	}
 	             	
 	           }
@@ -65,11 +68,8 @@
 
 	          console.log(that.loginModel);
            }
-       },
-       ready: function() {
-                 sessionStorage.setItem('phoneNum', loginModel.phoneNum);
-                 sessionStorage.setItem('password', loginModel.password);
-            }
+       }
+      
 
 	};
 
