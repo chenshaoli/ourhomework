@@ -6,6 +6,7 @@ import login from '../components/login/login'
 import register from '../components/register/register'
 import center from '../components/center/center'
 import book2 from '../components/book2/book2'
+import paypage from '../components/paypage/paypage'
 
 
 Vue.use(Router);
@@ -39,6 +40,11 @@ export default new Router({
       path: '/book2',
       name: 'book2',
       component: book2
+    },
+    {
+      path: '/paypage',
+      name: 'paypage',
+      component: paypage
     }
   ]
 });

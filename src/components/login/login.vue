@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="body">
 		<div class="login_body">
 			 <h2>会员登陆</h2>
 			 <form class="form-horizontal">
@@ -7,7 +7,7 @@
 				    <label for="phoneNum" class="col-sm-3 control-label">电话号码</label>
 				    <div class="col-sm-8 input-group">
 				    <div class="input-group-addon"><span class="glyphicon glyphicon glyphicon-earphone" aria-hidden="true"></span></div>
-				      <input type="email" class="form-control" id="phoneNum" placeholder="电话号码" name="phoneNum" v-model="loginModel.phoneNum">
+				      <input type="text" class="form-control" id="phoneNum" placeholder="电话号码" name="phoneNum" v-model="loginModel.phoneNum">
 				    </div>
 				  </div>
 				  <div class="form-group">
@@ -59,8 +59,9 @@
 	          		window.location.href="./book1";
 	          		that.person=data;
 	               // console.log(that.person);
-	                window.localStorage.setItem( 'personInfo', that.person );
-
+	                // window.localStorage.setItem( 'personInfo', that.person );
+	                localStorage["personInfo"] = JSON.stringify(that.person);
+	             //   alert(localStorage["personInfo"] )
 	          	}
 	             	
 	           }
@@ -76,12 +77,19 @@
 
 </script>
 <style>
+.body{
+	    width: 100%;
+	    height: 595px;
+		background-image: url("../../common/image/BsvT8k.jpg");
+		overflow: hidden;
+	}
 	.login_body{
 		width: 400px;
 		height: 350px;
 		border: 2px solid rgba(7,17,27,0.1);
 		margin:100px auto;
 	}
+
 	h2{
 		height: 30px;
 		line-height: 30px;

@@ -1,7 +1,7 @@
 <template>
 	<div class="header">
 		<div class="row">
-		  <div class="col-xs-6 col-md-2 col-md-offset-1"><a href="#"><img src="../../common/image/gQ4fcp.png" alt="同程旅游"></a></div>
+		  <div class="col-xs-6 col-md-2 col-md-offset-1"><a href="./book1"><img src="../../common/image/gQ4fcp.png" alt="同程旅游"></a></div>
 		  <div class="col-xs-6 col-md-2"></div>
 		  <div class="col-xs-6 col-md-7">
 		  <ul>

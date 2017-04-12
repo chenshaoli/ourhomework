@@ -48,9 +48,9 @@
 		  <table class="table table-hover maxtop">
 					<thead>
 					<tr>
-						<th>目的地</th>
 						<th>出发地</th>
 						<th>出发时间</th>
+						<th>目的地</th>
 						<th>到达时间</th>
 						<th>航司</th>
 						<th>航班编号</th>
@@ -58,12 +58,12 @@
 					</thead>
 					<tbody>
 					<tr v-for="fly in newflight">
+						<td>{{fly.start}}</td>
+						<td>{{fly.startTime}}</td>
 						<td>{{fly.dest}}</td>
 						<td>{{fly.destTime}}</td>
 						<td>{{fly.name}}</td>
 						<td>{{fly.number}}</td>
-						<td>{{fly.start}}</td>
-						<td>{{fly.startTime}}</td>
 						<td><button  class="btn btn-primary" id="aa" @click="transform(fly)">详情</button></td>
 					</tr>
 					<!-- <router-link class="btn btn-primary btn-sm" :to="{path:'./book2'}"  @click="transform(fly.id)">详情</router-link> -->
@@ -82,17 +82,14 @@ export default{
 	data(){
 		return{
 	   		newflight:[{
-                dest:'北京',
-                start:'南京',
-                startTime:'12334',
-                destTime:'23244'
+                
             }
 
             ],
 	      	flight:{
 	      		start:'',
 	      		dest:'',
-				startTime:''
+			startTime:''
 	      	}
       	}   
 	},
@@ -116,7 +113,7 @@ export default{
 		             for( var index in data){
 		              if(vm.flight.start===data.obj[index].start&&vm.flight.dest===data.obj[index].dest){
 		                  vm.newflight.push(data[index]);
-						  var flightmessage=JSON.stringify(data.obj);
+			 var flightmessage=JSON.stringify(data.obj);
 						   
                 }
 				         
@@ -125,7 +122,7 @@ export default{
           })
         },
 		transform:function(index){
-			      var flightInfo=index;
+			            var flightInfo=JSON.stringify(index);
 				  console.log(flightInfo);
 				  window.localStorage.setItem( 'flightInfo', flightInfo );
                     window.location.href="../book2";
@@ -142,7 +139,7 @@ export default{
 		               alert('获取信息失败！');
 		            },
 		            success:function(data){
-		              console.log(data.obj);
+		            //  console.log(data.obj);
                       _this.newflight=data.obj;
                       console.log(_this.newflight);
                    }
