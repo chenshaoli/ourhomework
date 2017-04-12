@@ -1,39 +1,58 @@
 <template>
-	<div class="header">
-		<div class="row">
-		  <div class="col-xs-6 col-md-2 col-md-offset-1"><a href="./book1"><img src="../../common/image/gQ4fcp.png" alt="同程旅游"></a></div>
-		  <div class="col-xs-6 col-md-2"></div>
-		  <div class="col-xs-6 col-md-7">
-		  <ul>
-			  <li><router-link :to="{path:'./book1'}">首页</router-link></li>
-			  <li><router-link :to="{path:'./login'}">登陆</router-link></li>
-				<li><router-link :to="{path:'./register'}">注册</router-link></li>
-				<li><router-link :to="{path:'./center'}">个人中心</router-link></li>
-		  </ul></div>
+        <div class="header">
+	<nav>
+		<div class="container-fluid row" id="title">
+		  <ul >
+		  	<li class="col-xs-6 col-md-1 col-md-offset-1">
+		  	<a href="./book1"><img src="../../common/image/gQ4fcp.png" alt="同程旅游"></a>
+		  	</li>
+		  	<li class="col-xs-6 col-md-4 col-md-offset-6">
+			  	<ul class="row">
+				  <li class="active col-xs-3 col-md-2 col-md-offset-3"><router-link :to="{path:'./book1'}" class="bold ">首页</router-link></li>
+				  <li class="col-xs-3 col-md-2"><router-link :to="{path:'./login'}" class="bold" >登陆</router-link></li>
+				  <li class="col-xs-3 col-md-2"><router-link :to="{path:'./register'}"class="bold">注册</router-link></li>
+				  <li class="col-xs-3 col-md-3"><router-link :to="{path:'./center'}"class="bold">个人中心</router-link></li>
+				  </ul>
+			  </li>
+		  </ul>
+		</div>
+	</nav>
         </div>
-	</div>
 </template>
 <script>
 	export default{
-
+                 data(){
+                 	return{
+                 		name:''
+                 	}
+                 },
+                 render:function(){
+                 	 this.name=JSON.parse(localStorage.getItem('personInfo')).obj.name;
+                 }
 	}
 </script>
 <style>
-.header{
-    height: 60px;
-    background-color: #87CEEB;
+#title{
+	height: 60px;
+	line-height: 60px;
 }
-.row>div>ul>li{
+#title>ul>li>a>img{
+	width:140px;
+	height: 60px;
+}
+
+.row>li>router-link{
   color:#fff;
   float: left;
   margin:0 50px;
   line-height: 60px;
   font-size: 16px;
 }
-.row>div>a>img{
-	width:140px;
-	height: 60px;
+.bold{
+	font-weight: bold;
+	color:	#708090;
 }
+
 .header>ul>li>a>img{
 	height: 60px;
 }

@@ -1,30 +1,32 @@
 <template>
-	<div>
-		<table class="table table-striped">
-			<tr>
-				<th>舱位类型</th>
-				<th>价格</th>
-				<th>数量</th>
-			</tr>
-			<tr>
-				<td>{{flightdetail.type}}</td>
-				<td>{{flightdetail.price}}</td>
-				<td>{{flightdetail.num}}</td>
-			</tr>
-		</table>
-		<table class="table table-striped">
-			<tr>
-				<th>姓名</th>
-				<th>电话</th>
-				<th>身份证</th>
-			</tr>
-			<tr>
-				<td>{{personInfo.names}}</td>
-				<td>{{personInfo.phone}}</td>
-				<td>{{personInfo.identify}}</td>
-			</tr>
+	<div class="panel panel-primary">
+		<div class="panel-heading">	<span class="glyphicon glyphicon-flag " aria-hidden="true"></span><i class="red">订单详情</i></div>
+		  <div class="panel-body"> 
+				<ul class="row ftbold">
+					<li>舱位类型</li>
+					<li>价格</li>
+					<li>数量</li>
+				</ul>
+				<ul>
+					<li>{{flightdetail.type}}</li>
+					<li>{{flightdetail.price}}</li>
+					<li>{{flightdetail.num}}</li>
+				</ul>
+		  </div>
+		
+		<ul class="row ftbold">
+			
+				<li>姓名</li>
+				<li>电话</li>
+				<li>身份证</li>
+			</ul><ul>
+			
+				<li>{{personInfo.names}}</li>
+				<li>{{personInfo.phone}}</li>
+				<li>{{personInfo.identify}}</li>
+			
 
-		</table>
+		</ul>
 		<table class="table table-striped">
 			<tr>
 				<th>出发地</th>
